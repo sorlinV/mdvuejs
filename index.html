@@ -6,10 +6,9 @@
 	<meta name="keywords" content="HTML,CSS,XML,JavaScript,VUEJS">
 	<meta name="author" content="SORLIN Valentin">
 	<!-- development version, includes helpful console warnings -->
-	<!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
-	<script src="vue.js"></script>
-	<script src="marked.js"></script>
-	<script src="lodash.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<script src="https://unpkg.com/marked@0.3.6"></script>
+	<script src="https://unpkg.com/lodash@4.16.0"></script>
 	<!-- production version, optimized for size and speed -->
 	<style>
 		html, body, #editor {
@@ -55,7 +54,7 @@
 	new Vue({
 	  el: '#editor',
 	  data: {
-		text: localStorage.getItem('saved')
+		text: (localStorage.getItem('saved')) ? localStorage.getItem('saved') : ""
 	  },
 	  computed: {
 		compiledMarkdown: function () {
