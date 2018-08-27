@@ -8,8 +8,8 @@
 	<!-- development version, includes helpful console warnings -->
 	<!-- <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script> -->
 	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
-	<script src="https://unpkg.com/marked@0.3.6"></script>
-	<script src="https://unpkg.com/lodash@4.16.0"></script>
+	<script src="https://unpkg.com/marked@0.3.6/lib/marked.js"></script>
+	<script src="https://unpkg.com/lodash@4.16.0/lodash.js"></script>
 	<!-- production version, optimized for size and speed -->
 	<style>
 		html, body, #editor {
@@ -67,7 +67,7 @@
 		  this.text = e.target.value
 		}, 300),
 		save: function (_text) {
-				localStorage.setItem('saved', _text);
+			localStorage.setItem('saved', _text);
 		}
 	  }
 	})
