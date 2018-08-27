@@ -47,31 +47,28 @@
 
 <body>
 	<div id="editor">
-		<textarea :value="desc.text" @input="update"></textarea>
+		<textarea :value="text" @input="update"></textarea>
 		<div v-html="compiledMarkdown"></div>
-		<button v-on:click="desc.save(desc.text)">save</button>
+		<button v-on:click="save(text)">save</button>
 	</div>
 	<script>
 	new Vue({
 	  el: '#editor',
 	  data: {
-		desc: {
-			text: (localStorage.getItem('saved') === undefined) ? "" : localStorage.getItem('saved'),
-			save: function (_text) {
-				console.log(_text);
-				localStorage.setItem('saved', _text);
-			}
-		}
+		text: localStorage.getItem('saved')
 	  },
 	  computed: {
 		compiledMarkdown: function () {
-		  return marked(this.desc.text, { sanitize: true })
+		  return marked(this.text, { sanitize: true })
 		}
 	  },
 	  methods: {
 		update: _.debounce(function (e) {
-		  this.desc.text = e.target.value
-		}, 300)
+		  this.text = e.target.value
+		}, 300),
+		save: function (_text) {
+				localStorage.setItem('saved', _text);
+		}
 	  }
 	})
 	</script>
